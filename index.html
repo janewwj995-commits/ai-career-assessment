@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI职业结构风险评估系统 - AI共学社</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="floating-shapes">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+        <div class="shape shape-3"></div>
+    </div>
+    
+    <div class="container">
+        <!-- 头部 -->
+        <header class="header">
+            <div class="brand-badge" id="brandBadge" style="cursor: pointer;">
+                <svg class="brand-logo" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M10 14C10 11.7909 11.7909 10 14 10H26C28.2091 10 30 11.7909 30 14V26C30 28.2091 28.2091 30 26 30H14C11.7909 30 10 28.2091 10 26V14Z" fill="white"/>
+                    <circle cx="17" cy="19" r="2.5" fill="#667eea"/>
+                    <circle cx="23" cy="19" r="2.5" fill="#667eea"/>
+                    <path d="M16 24C17 25.5 23 25.5 24 24" stroke="#667eea" stroke-width="1.5" stroke-linecap="round"/>
+                </svg>
+                <span class="brand-text">AI共学社</span>
+            </div>
+        </header>
+
+        <!-- 主要内容区域 -->
+        <main class="main-content">
+            <!-- 欢迎页面 -->
+            <div id="welcome-page" class="page active">
+                
+                <!-- Slogan区 -->
+                <section class="slogan-section">
+                    <div class="slogan">
+                        <div class="slogan-line">不是你不够努力，</div>
+                        <div class="slogan-line">只是时代已经换了规则</div>
+                    </div>
+                </section>
+                
+                <!-- 主视觉区 -->
+                <section class="hero-section">
+                    <div class="robot-section">
+                        <div class="robot-illustration">
+                            <div class="robot">
+                                <div class="robot-head">
+                                    <div class="robot-eye left"></div>
+                                    <div class="robot-eye right"></div>
+                                    <div class="robot-mouth"></div>
+                                </div>
+                                <div class="robot-body">
+                                    <div class="robot-screen">
+                                        <div class="screen-content">
+                                            <div class="data-bar"></div>
+                                            <div class="data-bar"></div>
+                                            <div class="data-bar"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="robot-hand left-hand">
+                                    <span class="hand-icon">👋</span>
+                                </div>
+                                <div class="robot-hand right-hand">
+                                    <span class="hand-icon">✨</span>
+                                </div>
+                            </div>
+                            <div class="robot-glow"></div>
+                        </div>
+                        <div class="floating-icons">
+                            <div class="floating-icon icon-1">🤖</div>
+                            <div class="floating-icon icon-2">⚡</div>
+                            <div class="floating-icon icon-3">🚀</div>
+                            <div class="floating-icon icon-4">💡</div>
+                        </div>
+                    </div>
+                    
+                    <div class="product-section">
+                        <h2 class="hero-title">
+                            在<span class="gradient-text">AI时代</span>，你的职业风险有多高？
+                        </h2>
+                        
+                        <p class="product-intro">
+                            无论你是职场人、管理者、自由职业者，还是正在寻求职业转型，<br>
+                            只需5分钟，锁定你的岗位风险，找到升级方向。<br><br>
+                            基于结构化评估模型，你将获得一份专属风险分析报告。
+                        </p>
+                        
+                        <div class="cta-section">
+                            <button id="start-btn" class="btn primary-btn">
+                                <span class="btn-text">解锁我的专属报告</span>
+                                <span class="btn-arrow">→</span>
+                            </button>
+                            
+                            <p class="disclaimer">
+                                ⚠️ 本测试仅供参考，不构成职业建议
+                            </p>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- 滑动提示 -->
+                <div class="scroll-hint">
+                    <div class="scroll-icon">
+                        <svg viewBox="0 0 24 24" fill="none" class="scroll-triangle">
+                            <path d="M12 16L6 10H18L12 16Z" fill="url(#triangleGradient)"/>
+                            <defs>
+                                <linearGradient id="triangleGradient" x1="6" y1="10" x2="18" y2="16" gradientUnits="userSpaceOnUse">
+                                    <stop stop-color="#667eea"/>
+                                    <stop offset="1" stop-color="#764ba2"/>
+                                </linearGradient>
+                            </defs>
+                        </svg>
+                    </div>
+                    <div class="scroll-text">向下滑动查看更多</div>
+                </div>
+                
+                <!-- 特性卡片区 -->
+                <div class="card-section-badge">
+                    一个懂你职业焦虑的<span class="gradient-text-badge">AI工具</span>
+                </div>
+                <section class="features-section">
+                    <div class="feature-card feature-card-1">
+                        <div class="card-image">
+                            <svg viewBox="0 0 200 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <rect x="35" y="20" width="130" height="85" rx="10" fill="url(#laptopBody)" stroke="url(#laptopStroke)" stroke-width="2"/>
+                                <rect x="45" y="30" width="110" height="65" rx="6" fill="white"/>
+                                <rect x="52" y="37" width="80" height="8" rx="2" fill="#667eea" opacity="0.8"/>
+                                <rect x="52" y="50" width="100" height="6" rx="1" fill="#764ba2" opacity="0.7"/>
+                                <rect x="52" y="62" width="70" height="6" rx="1" fill="#667eea" opacity="0.6"/>
+                                <rect x="52" y="74" width="90" height="6" rx="1" fill="#764ba2" opacity="0.5"/>
+                                <rect x="25" y="105" width="150" height="14" rx="4" fill="url(#keyboardGrad)"/>
+                                <rect x="70" y="119" width="60" height="8" rx="2" fill="url(#touchPad)"/>
+                                <defs>
+                                    <linearGradient id="laptopBody" x1="35" y1="20" x2="165" y2="105" gradientUnits="userSpaceOnUse">
+                                        <stop stop-color="#ffffff"/>
+                                        <stop offset="1" stop-color="#f0f4ff"/>
+                                    </linearGradient>
+                                    <linearGradient id="laptopStroke" x1="35" y1="20" x2="165" y2="105" gradientUnits="userSpaceOnUse">
+                                        <stop stop-color="#667eea"/>
+                                        <stop offset="1" stop-color="#764ba2"/>
+                                    </linearGradient>
+                                    <linearGradient id="keyboardGrad" x1="25" y1="105" x2="175" y2="119" gradientUnits="userSpaceOnUse">
+                                        <stop stop-color="#e8ecf8"/>
+                                        <stop offset="1" stop-color="#d4dcf0"/>
+                                    </linearGradient>
+                                    <linearGradient id="touchPad" x1="70" y1="119" x2="130" y2="127" gradientUnits="userSpaceOnUse">
+                                        <stop stop-color="#667eea"/>
+                                        <stop offset="1" stop-color="#764ba2"/>
+                                    </linearGradient>
+                                </defs>
+                            </svg>
+                        </div>
+                        <div class="card-content">
+                            <h3 class="card-title">有些职业已经被AI重新定义</h3>
+                            <p class="card-desc">翻译、客服、设计、运营、程序员……很多岗位都正在被重新塑造。<br>然而，很多人并不确定自己的岗位到底会不会被影响，以及影响究竟有多大。</p>
+                        </div>
+                    </div>
+                    
+                    <div class="feature-card feature-card-2">
+                        <div class="card-image">
+                            <svg viewBox="0 0 200 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <rect x="15" y="20" width="170" height="120" rx="12" fill="white" opacity="0.95"/>
+                                <text x="35" y="50" fill="#667eea" font-size="16" font-family="Georgia, serif" font-weight="bold">R =</text>
+                                <text x="70" y="50" fill="#764ba2" font-size="16" font-family="Georgia, serif" font-weight="bold">αT</text>
+                                <tspan x="86" y="47" fill="#764ba2" font-size="9" font-family="Georgia, serif" font-weight="bold">s</tspan>
+                                <text x="95" y="50" fill="#667eea" font-size="16" font-family="Georgia, serif" font-weight="bold"> +</text>
+                                <text x="115" y="50" fill="#764ba2" font-size="16" font-family="Georgia, serif" font-weight="bold">βM</text>
+                                <tspan x="131" y="47" fill="#764ba2" font-size="9" font-family="Georgia, serif" font-weight="bold">d</tspan>
+                                <text x="140" y="50" fill="#667eea" font-size="16" font-family="Georgia, serif" font-weight="bold"> +</text>
+                                <text x="160" y="50" fill="#764ba2" font-size="16" font-family="Georgia, serif" font-weight="bold">γP</text>
+                                <tspan x="176" y="47" fill="#764ba2" font-size="9" font-family="Georgia, serif" font-weight="bold">g</tspan>
+                                <path d="M30 65 L170 65" stroke="#4facfe" stroke-width="2"/>
+                                <text x="35" y="88" fill="#667eea" font-size="13" font-family="Georgia, serif" font-weight="bold">σ(T</text>
+                                <tspan x="55" y="85" fill="#667eea" font-size="8" font-family="Georgia, serif" font-weight="bold">s</tspan>
+                                <text x="60" y="88" fill="#667eea" font-size="13" font-family="Georgia, serif" font-weight="bold">, M</text>
+                                <tspan x="80" y="85" fill="#667eea" font-size="8" font-family="Georgia, serif" font-weight="bold">d</tspan>
+                                <text x="85" y="88" fill="#667eea" font-size="13" font-family="Georgia, serif" font-weight="bold">, P</text>
+                                <tspan x="103" y="85" fill="#667eea" font-size="8" font-family="Georgia, serif" font-weight="bold">g</tspan>
+                                <text x="108" y="88" fill="#667eea" font-size="13" font-family="Georgia, serif" font-weight="bold">)</text>
+                                <path d="M45 102 Q75 92 100 102 Q125 112 155 102" stroke="#764ba2" stroke-width="2" fill="none" opacity="0.6"/>
+                                <circle cx="50" cy="120" r="4.5" fill="url(#grad1)" opacity="0.85"/>
+                                <circle cx="100" cy="120" r="5.5" fill="url(#grad2)" opacity="0.8"/>
+                                <circle cx="150" cy="120" r="4.5" fill="url(#grad1)" opacity="0.75"/>
+                                <defs>
+                                    <linearGradient id="grad1" x1="45.5" y1="115.5" x2="54.5" y2="124.5" gradientUnits="userSpaceOnUse">
+                                        <stop stop-color="#667eea"/>
+                                        <stop offset="1" stop-color="#764ba2"/>
+                                    </linearGradient>
+                                    <linearGradient id="grad2" x1="94.5" y1="114.5" x2="105.5" y2="125.5" gradientUnits="userSpaceOnUse">
+                                        <stop stop-color="#4facfe"/>
+                                        <stop offset="1" stop-color="#00f2fe"/>
+                                    </linearGradient>
+                                </defs>
+                            </svg>
+                        </div>
+                        <div class="card-content">
+                            <h3 class="card-title">你的职业风险，其实可以被分析</h3>
+                            <p class="card-desc">一个岗位会不会被AI影响，通常取决于三件事：技术门槛、市场需求、个人能力提升空间。<br>评估系统会从多个维度科学分析，帮你更清晰地看见自己当前的职业位置。</p>
+                        </div>
+                    </div>
+                    
+                    <div class="feature-card feature-card-3">
+                        <div class="card-image">
+                            <svg viewBox="0 0 200 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <rect x="25" y="25" width="150" height="110" rx="10" fill="white" opacity="0.95"/>
+                                <rect x="30" y="30" width="140" height="20" rx="4" fill="url(#headerGrad)" opacity="0.8"/>
+                                <rect x="30" y="55" width="140" height="1" fill="#e0e0e0"/>
+                                <rect x="30" y="72" width="140" height="1" fill="#e0e0e0"/>
+                                <rect x="30" y="89" width="140" height="1" fill="#e0e0e0"/>
+                                <rect x="30" y="106" width="140" height="1" fill="#e0e0e0"/>
+                                <rect x="75" y="30" width="1" height="100" fill="#e0e0e0"/>
+                                <rect x="120" y="30" width="1" height="100" fill="#e0e0e0"/>
+                                <rect x="38" y="35" width="30" height="10" rx="2" fill="white" opacity="0.7"/>
+                                <rect x="82" y="35" width="30" height="10" rx="2" fill="white" opacity="0.7"/>
+                                <rect x="127" y="35" width="30" height="10" rx="2" fill="white" opacity="0.7"/>
+                                <rect x="38" y="60" width="30" height="8" rx="1" fill="#667eea" opacity="0.5"/>
+                                <rect x="82" y="60" width="30" height="8" rx="1" fill="#764ba2" opacity="0.4"/>
+                                <rect x="127" y="60" width="30" height="8" rx="1" fill="#667eea" opacity="0.35"/>
+                                <rect x="38" y="77" width="30" height="8" rx="1" fill="#764ba2" opacity="0.4"/>
+                                <rect x="82" y="77" width="30" height="8" rx="1" fill="#667eea" opacity="0.35"/>
+                                <rect x="127" y="77" width="30" height="8" rx="1" fill="#764ba2" opacity="0.3"/>
+                                <rect x="38" y="94" width="30" height="8" rx="1" fill="#667eea" opacity="0.35"/>
+                                <rect x="82" y="94" width="30" height="8" rx="1" fill="#764ba2" opacity="0.3"/>
+                                <rect x="127" y="94" width="30" height="8" rx="1" fill="#667eea" opacity="0.25"/>
+                                <rect x="38" y="111" width="30" height="8" rx="1" fill="#764ba2" opacity="0.3"/>
+                                <rect x="82" y="111" width="30" height="8" rx="1" fill="#667eea" opacity="0.25"/>
+                                <rect x="127" y="111" width="30" height="8" rx="1" fill="#764ba2" opacity="0.2"/>
+                                <defs>
+                                    <linearGradient id="headerGrad" x1="30" y1="30" x2="170" y2="50" gradientUnits="userSpaceOnUse">
+                                        <stop stop-color="#667eea"/>
+                                        <stop offset="1" stop-color="#764ba2"/>
+                                    </linearGradient>
+                                </defs>
+                            </svg>
+                        </div>
+                        <div class="card-content">
+                            <h3 class="card-title">一份属于你的职业风险报告</h3>
+                            <p class="card-desc">报告会集成你的职业风险等级、风险来自哪里、以及未来可以考虑的升级方向。<br>当你脑海中有了足够客观理性的信息，才能为自己做出正确的长远选择。</p>
+                        </div>
+                    </div>
+                    
+                    <div class="feature-card feature-card-4">
+                        <div class="card-image">
+                            <svg viewBox="0 0 200 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="40" cy="55" r="24" fill="white"/>
+                                <circle cx="33" cy="50" r="3.5" fill="#667eea"/>
+                                <circle cx="47" cy="50" r="3.5" fill="#667eea"/>
+                                <path d="M31 63C36 69 44 69 49 63" stroke="#667eea" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+                                <circle cx="100" cy="55" r="24" fill="white"/>
+                                <circle cx="93" cy="50" r="3.5" fill="#764ba2"/>
+                                <circle cx="107" cy="50" r="3.5" fill="#764ba2"/>
+                                <path d="M91 63C96 69 104 69 109 63" stroke="#764ba2" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+                                <circle cx="160" cy="55" r="24" fill="white"/>
+                                <circle cx="153" cy="50" r="3.5" fill="#667eea"/>
+                                <circle cx="167" cy="50" r="3.5" fill="#667eea"/>
+                                <path d="M151 63C156 69 164 69 169 63" stroke="#667eea" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+                                <circle cx="70" cy="110" r="24" fill="white"/>
+                                <circle cx="63" cy="105" r="3.5" fill="#4facfe"/>
+                                <circle cx="77" cy="105" r="3.5" fill="#4facfe"/>
+                                <path d="M61 118C66 124 74 124 79 118" stroke="#4facfe" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+                                <circle cx="130" cy="110" r="24" fill="white"/>
+                                <circle cx="123" cy="105" r="3.5" fill="#764ba2"/>
+                                <circle cx="137" cy="105" r="3.5" fill="#764ba2"/>
+                                <path d="M121 118C126 124 134 124 139 118" stroke="#764ba2" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+                            </svg>
+                        </div>
+                        <div class="card-content">
+                            <h3 class="card-title">适合所有人做的测试</h3>
+                            <p class="card-desc">测试由20道问题组成，不需要准备任何资料，只需要根据真实情况回答即可。<br>无论你是职场人、管理者，还是正在考虑转型，大约5分钟，你就可以看到未来。</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 报告预览按钮 -->
+                <div class="report-preview-section">
+                    <h3 class="preview-title">查看所有报告类型</h3>
+                    <div class="preview-buttons">
+                        <button class="preview-btn" onclick="previewReport('结构风险者')">结构风险者</button>
+                        <button class="preview-btn" onclick="previewReport('转型探索者')">转型探索者</button>
+                        <button class="preview-btn" onclick="previewReport('潜力焦虑者')">潜力焦虑者</button>
+                        <button class="preview-btn" onclick="previewReport('主动进化者')">主动进化者</button>
+                    </div>
+                </div>
+
+                <!-- 底部测试按钮 -->
+                <div class="bottom-cta-section">
+                    <button id="bottomStartQuiz" class="cta-button">
+                        <span class="btn-text">解锁我的专属报告</span>
+                        <span class="btn-arrow">→</span>
+                    </button>
+                </div>
+                
+                <!-- 回到顶部按钮 -->
+                <button id="backToTop" class="back-to-top">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 19V5M12 5L5 12M12 5L19 12" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    <span class="back-to-top-tooltip">回到顶部</span>
+                </button>
+
+            </div>
+
+            <!-- 报告页面 -->
+            <div id="report-page" class="page">
+                <div class="report-container">
+                    <div class="report-content">
+                        <div class="report-type-badge" id="reportTypeBadge">测试报告</div>
+                        
+                        <div class="report-header-with-robot">
+                            <div class="report-header-content">
+                                <h1 class="report-title" id="reportTitle"></h1>
+                                <p class="report-subtitle" id="reportSubtitle"></p>
+                            </div>
+                            <div class="report-robot-container">
+                                <!-- 结构风险者机器人 -->
+                                <div class="report-robot report-robot-risk" id="reportRobotRisk">
+                                    <div class="robot-glow risk-glow"></div>
+                                    <div class="robot-head risk-head">
+                                        <div class="warning-light"></div>
+                                        <div class="robot-eye left risk-eye"></div>
+                                        <div class="robot-eye right risk-eye"></div>
+                                        <div class="robot-mouth risk-mouth"></div>
+                                    </div>
+                                    <div class="robot-body risk-body">
+                                        <div class="shield-icon">🛡️</div>
+                                    </div>
+                                </div>
+                                
+                                <!-- 转型探索者机器人 -->
+                                <div class="report-robot report-robot-explorer" id="reportRobotExplorer" style="display: none;">
+                                    <div class="robot-glow explorer-glow"></div>
+                                    <div class="robot-head explorer-head">
+                                        <div class="antenna explorer-antenna"></div>
+                                        <div class="robot-eye left explorer-eye"></div>
+                                        <div class="robot-eye right explorer-eye"></div>
+                                        <div class="robot-mouth explorer-mouth"></div>
+                                    </div>
+                                    <div class="robot-body explorer-body">
+                                        <div class="compass-icon">🧭</div>
+                                        <div class="magnifier-icon">🔍</div>
+                                    </div>
+                                </div>
+                                
+                                <!-- 潜力焦虑者机器人 -->
+                                <div class="report-robot report-robot-anxious" id="reportRobotAnxious" style="display: none;">
+                                    <div class="robot-glow anxious-glow"></div>
+                                    <div class="robot-head anxious-head">
+                                        <div class="lightbulb-icon">💡</div>
+                                        <div class="robot-eye left anxious-eye"></div>
+                                        <div class="robot-eye right anxious-eye"></div>
+                                        <div class="robot-mouth anxious-mouth"></div>
+                                    </div>
+                                    <div class="robot-body anxious-body">
+                                        <div class="stars">
+                                            <span class="star">⭐</span>
+                                            <span class="star">⭐</span>
+                                            <span class="star">⭐</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- 主动进化者机器人 -->
+                                <div class="report-robot report-robot-evolver" id="reportRobotEvolver" style="display: none;">
+                                    <div class="robot-glow evolver-glow"></div>
+                                    <div class="robot-head evolver-head">
+                                        <div class="antenna evolver-antenna"></div>
+                                        <div class="robot-eye left evolver-eye"></div>
+                                        <div class="robot-eye right evolver-eye"></div>
+                                        <div class="robot-mouth evolver-mouth"></div>
+                                    </div>
+                                    <div class="robot-body evolver-body">
+                                        <div class="wings">
+                                            <div class="wing left-wing"></div>
+                                            <div class="wing right-wing"></div>
+                                        </div>
+                                        <div class="arrow-icon">⬆️</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- 关键要点 -->
+                        <div class="key-insights-section" style="animation: fadeInUp 0.6s ease-out 0.3s both;">
+                            <h3 class="section-heading">📊 关键洞察</h3>
+                            <div class="key-insights-grid">
+                                <div class="key-insight-card" id="keyInsight1">
+                                    <div class="insight-icon">⚠️</div>
+                                    <h4 class="insight-title">岗位风险级别</h4>
+                                    <p class="insight-text" id="insightRiskLevel">中等风险</p>
+                                </div>
+                                <div class="key-insight-card" id="keyInsight2">
+                                    <div class="insight-icon">🤖</div>
+                                    <h4 class="insight-title">AI能力成熟度</h4>
+                                    <p class="insight-text" id="insightAIMaturity">入门阶段</p>
+                                </div>
+                                <div class="key-insight-card" id="keyInsight3">
+                                    <div class="insight-icon">🚀</div>
+                                    <h4 class="insight-title">成长执行力</h4>
+                                    <p class="insight-text" id="insightGrowthMomentum">中等水平</p>
+                                </div>
+                                <div class="key-insight-card" id="keyInsight4">
+                                    <div class="insight-icon">🎯</div>
+                                    <h4 class="insight-title">升级优先级</h4>
+                                    <p class="insight-text" id="insightUpgradePriority">高优先级</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- 章节导航 -->
+                        <div class="section-navigation" id="sectionNavigation">
+                            <div class="nav-title">快速导航</div>
+                            <nav class="nav-links">
+                                <a href="#riskAnalysisSection" class="nav-link active" data-section="1">1. 岗位风险</a>
+                                <a href="#aiMaturitySection" class="nav-link" data-section="2">2. AI能力</a>
+                                <a href="#growthMomentumSection" class="nav-link" data-section="3">3. 成长执行</a>
+                                <a href="#overallJudgmentSection" class="nav-link" data-section="4">4. 综合判断</a>
+                                <a href="#upgradeDirectionSection" class="nav-link" data-section="5">5. 升级方向</a>
+                            </nav>
+                        </div>
+                        
+                        <!-- 可视化区域 -->
+                        <div class="report-visual-section">
+                            <div class="report-card combined-card" style="animation: fadeInUp 0.6s ease-out 0.2s both;">
+                                <div class="combined-card-left">
+                                    <h3 class="card-header">职业风险指数</h3>
+                                    <div class="gauge-container">
+                                        <svg class="gauge-svg" viewBox="0 0 200 200">
+                                            <defs>
+                                                <linearGradient id="gaugeGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                                                    <stop offset="0%" stop-color="#ff6b6b"/>
+                                                    <stop offset="50%" stop-color="#f6c453"/>
+                                                    <stop offset="100%" stop-color="#48bb78"/>
+                                                </linearGradient>
+                                            </defs>
+                                            <circle class="gauge-circle-bg" cx="100" cy="100" r="70"></circle>
+                                            <circle class="gauge-circle" id="riskGauge" cx="100" cy="100" r="70" stroke-dasharray="440" stroke-dashoffset="440"></circle>
+                                        </svg>
+                                        <div class="gauge-value" id="riskValue">0%</div>
+                                        <div class="gauge-label">风险度</div>
+                                        <div class="gauge-risk-level">
+                                            <span class="risk-level-dot risk-level-low"></span>
+                                            <span class="risk-level-label">低风险</span>
+                                            <span class="risk-level-dot risk-level-medium"></span>
+                                            <span class="risk-level-label">中风险</span>
+                                            <span class="risk-level-dot risk-level-high"></span>
+                                            <span class="risk-level-label">高风险</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="combined-card-right">
+                                    <h3 class="card-header">能力五维雷达图</h3>
+                                    <div class="radar-chart-container">
+                                        <svg class="radar-svg" viewBox="0 0 300 300">
+                                            <polygon class="radar-bg" points="150,30 270,100 230,240 70,240 30,100"></polygon>
+                                            <polygon class="radar-bg" points="150,60 240,110 210,210 90,210 60,110"></polygon>
+                                            <polygon class="radar-bg" points="150,90 210,120 190,180 110,180 90,120"></polygon>
+                                            <line x1="150" y1="30" x2="150" y2="150" stroke="#e2e8f0" stroke-width="1"></line>
+                                            <line x1="270" y1="100" x2="150" y2="150" stroke="#e2e8f0" stroke-width="1"></line>
+                                            <line x1="230" y1="240" x2="150" y2="150" stroke="#e2e8f0" stroke-width="1"></line>
+                                            <line x1="70" y1="240" x2="150" y2="150" stroke="#e2e8f0" stroke-width="1"></line>
+                                            <line x1="30" y1="100" x2="150" y2="150" stroke="#e2e8f0" stroke-width="1"></line>
+                                            <polygon class="radar-polygon" id="radarPolygon" points=""></polygon>
+                                            <circle class="radar-point" id="radarPoint1" cx="150" cy="30" r="5"></circle>
+                                            <circle class="radar-point" id="radarPoint2" cx="270" cy="100" r="5"></circle>
+                                            <circle class="radar-point" id="radarPoint3" cx="230" cy="240" r="5"></circle>
+                                            <circle class="radar-point" id="radarPoint4" cx="70" cy="240" r="5"></circle>
+                                            <circle class="radar-point" id="radarPoint5" cx="30" cy="100" r="5"></circle>
+                                        </svg>
+                                        <div class="radar-labels">
+                                            <div class="radar-label radar-label-1">岗位安全度</div>
+                                            <div class="radar-label radar-label-2">AI能力</div>
+                                            <div class="radar-label radar-label-3">学习能力</div>
+                                            <div class="radar-label radar-label-4">执行力</div>
+                                            <div class="radar-label radar-label-5">成长潜力</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- 详细分析 -->
+                        <div class="report-sections">
+                            <div class="report-section" id="riskAnalysisSection">
+                                <h2 class="section-title">
+                                    1. 岗位结构风险分析
+                                    <div class="section-stars" id="sectionStars1"></div>
+                                </h2>
+                                <div class="section-content" id="riskAnalysis"></div>
+                            </div>
+                            
+                            <div class="report-section" id="aiMaturitySection">
+                                <h2 class="section-title">
+                                    2. AI能力成熟度分析
+                                    <div class="section-stars" id="sectionStars2"></div>
+                                </h2>
+                                <div class="section-content" id="aiMaturity"></div>
+                            </div>
+                            
+                            <div class="report-section" id="growthMomentumSection">
+                                <h2 class="section-title">
+                                    3. 成长执行力状态
+                                    <div class="section-stars" id="sectionStars3"></div>
+                                </h2>
+                                <div class="section-content" id="growthMomentum"></div>
+                            </div>
+                            
+                            <div class="report-section" id="overallJudgmentSection">
+                                <h2 class="section-title">
+                                    4. 综合风险类型判断
+                                    <div class="section-stars" id="sectionStars4"></div>
+                                </h2>
+                                <div class="section-content" id="overallJudgment"></div>
+                            </div>
+                            
+                            <div class="report-section" id="upgradeDirectionSection">
+                                <h2 class="section-title">5. 升级方向提示</h2>
+                                <div class="section-content" id="upgradeDirection"></div>
+                                <div class="action-steps">
+                                    <div class="action-step">
+                                        <div class="step-number">1</div>
+                                        <div class="step-content">
+                                            <h4 class="step-title">明确能力叠加方向</h4>
+                                            <p class="step-description">选择一个与岗位相关的AI能力方向深入学习和实践，建立核心优势</p>
+                                        </div>
+                                    </div>
+                                    <div class="action-step">
+                                        <div class="step-number">2</div>
+                                        <div class="step-content">
+                                            <h4 class="step-title">建立学习反馈循环</h4>
+                                            <p class="step-description">设定具体的学习目标，定期评估进展，调整学习策略</p>
+                                        </div>
+                                    </div>
+                                    <div class="action-step">
+                                        <div class="step-number">3</div>
+                                        <div class="step-content">
+                                            <h4 class="step-title">实践项目驱动成长</h4>
+                                            <p class="step-description">通过实际项目应用所学知识，积累实践经验，提升解决问题的能力</p>
+                                        </div>
+                                    </div>
+                                    <div class="action-step">
+                                        <div class="step-number">4</div>
+                                        <div class="step-content">
+                                            <h4 class="step-title">构建专业网络</h4>
+                                            <p class="step-description">连接行业内的专业人士，分享经验，获取反馈，拓展职业机会</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 问卷页面 -->
+            <div id="quiz-page" class="page">
+                <div class="quiz-container">
+                    <!-- 进度条 -->
+                    <div class="quiz-progress">
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="progressFill"></div>
+                        </div>
+                        <div class="progress-text">
+                            <span id="questionNumber">1</span>/20
+                        </div>
+                    </div>
+                    
+                    <!-- 模块标题 -->
+                    <div class="module-title" id="moduleTitle"></div>
+                    
+                    <!-- 问题 -->
+                    <div class="question-text" id="questionText"></div>
+                    
+                    <!-- 选项 -->
+                    <div class="options-container" id="optionsContainer"></div>
+                    
+                    <!-- 导航按钮 -->
+                    <div class="quiz-nav">
+                        <button id="prevBtn" class="nav-btn prev-btn">上一题</button>
+                        <button id="submitBtn" class="nav-btn submit-btn" style="display: none;">生成报告</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    
+    <!-- 弹窗 -->
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal">
+            <div class="modal-close" id="modalClose">&times;</div>
+            <div class="modal-content" id="modalContent">
+                这里是详细介绍内容
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

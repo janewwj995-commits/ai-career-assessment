@@ -281,6 +281,11 @@ function showPage(pageId) {
     if (targetPage) {
         targetPage.classList.add('active');
     }
+    
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
 }
 
 function renderQuestion() {
@@ -358,6 +363,7 @@ const reportData = {
     '结构风险者': {
         badge: '高风险人群',
         title: '结构风险者',
+        description: '你正处在一个需要主动升级能力结构的阶段。随着技术不断提升效率，你所处的岗位成长空间可能会逐渐变窄，因此提前开始能力升级，会为未来创造更大的选择空间。对你来说，现在正是一个适合重新思考职业结构的时期。',
         subtitle: '（高风险 + 中低AI能力 + 中低执行力）',
         image: '文件/结构风险者.png',
         riskAnalysis: `
@@ -407,6 +413,7 @@ const reportData = {
     '转型探索者': {
         badge: '中风险人群',
         title: '转型探索者',
+        description: '你已经开始适应变化，但能力优势还在形成过程中。你对技术变化是开放的，也在不断尝试新的方法，但目前这些尝试还没有完全形成稳定的能力体系。如果未来能够将这些分散的尝试逐步整合为稳定能力，你的成长空间会明显扩大。',
         subtitle: '（中风险 + 中AI能力 + 中执行力）',
         image: '文件/转型探索者.png',
         riskAnalysis: `
@@ -447,11 +454,12 @@ const reportData = {
             <p>方向选择，将决定你未来三年的差距。</p>
         `
     },
-    '潜力焦虑者': {
+    '潜力爆发者': {
         badge: '潜力人群',
-        title: '潜力焦虑者',
+        title: '潜力爆发者',
+        description: '你具备不错的能力基础，但仍在寻找最适合自己的发展方向。从岗位结构来看，你当前的工作风险并不高，同时你也已经具备一定的AI理解能力和学习意识，你唯一需要的就是放平心态。一旦找到稳定的发展方向，并持续积累，你的成长速度往往会比大多数人更快。',
         subtitle: '（低风险 + 中高AI能力 + 中执行力）',
-        image: '文件/潜力焦虑者.png',
+        image: '文件/潜力爆发者.png',
         riskAnalysis: `
             <p>你的岗位结构相对稳健：</p>
             <ul>
@@ -493,6 +501,7 @@ const reportData = {
     '主动进化者': {
         badge: '高成长人群',
         title: '主动进化者',
+        description: '你已经把技术变化转化为自己的长期优势。而且，学习和升级对你来说更像是一种持续行为。因此，你当前的挑战已经不再是是否能够适应变化，而是如何进一步扩大自己的优势。通过持续积累和能力外延，你有机会在未来形成更大的影响力。',
         subtitle: '（低风险 + 高AI能力 + 高执行力）',
         image: '文件/主动进化者.png',
         riskAnalysis: `
@@ -557,7 +566,7 @@ function determineReportType(scores) {
     } else if (aScore >= 9 && aScore <= 14 && bScore >= 9 && bScore <= 16 && cScore <= 12) {
         return '转型探索者';
     } else if (aScore <= 8 && bScore >= 9 && bScore <= 16 && cScore >= 9 && cScore <= 16) {
-        return '潜力焦虑者';
+        return '潜力爆发者';
     } else if (aScore <= 8 && bScore >= 17 && cScore >= 17) {
         return '主动进化者';
     } else if (aScore >= 15) {
@@ -567,7 +576,7 @@ function determineReportType(scores) {
     } else if (bScore >= 17 && cScore >= 17) {
         return '主动进化者';
     } else {
-        return '潜力焦虑者';
+        return '潜力爆发者';
     }
 }
 
@@ -575,7 +584,11 @@ function renderReport(reportType) {
     const report = reportData[reportType];
     
     document.getElementById('reportTitle').textContent = report.title;
-    document.getElementById('reportSubtitle').textContent = report.subtitle;
+    
+    const descriptionEl = document.getElementById('reportDescription');
+    const sentences = report.description.split('。').filter(s => s.trim());
+    descriptionEl.innerHTML = sentences.map(sentence => `<p>${sentence}。</p>`).join('');
+    
     document.getElementById('riskAnalysis').innerHTML = report.riskAnalysis;
     document.getElementById('aiMaturity').innerHTML = report.aiMaturity;
     document.getElementById('growthMomentum').innerHTML = report.growthMomentum;
@@ -590,13 +603,14 @@ function renderReport(reportType) {
     const robotIds = {
         '结构风险者': 'reportRobotRisk',
         '转型探索者': 'reportRobotExplorer',
-        '潜力焦虑者': 'reportRobotAnxious',
+        '潜力爆发者': 'reportRobotAnxious',
         '主动进化者': 'reportRobotEvolver'
     };
     document.getElementById(robotIds[reportType]).style.display = 'block';
     
     let scores;
-    if (userAnswers.length > 0) {
+    const userAnswersCount = Object.keys(userAnswers).length;
+    if (userAnswersCount > 0) {
         scores = calculateScores();
     } else {
         scores = getDefaultScores(reportType);
@@ -604,9 +618,7 @@ function renderReport(reportType) {
     
     renderGauge(scores);
     renderRadarChart(scores);
-    renderSectionStars(scores);
     
-    updateKeyInsights(scores, reportType);
     setupSectionNavigation();
 }
 
@@ -614,7 +626,7 @@ function getDefaultScores(reportType) {
     const defaultScores = {
         '结构风险者': { a: 20, b: 5, c: 5 },
         '转型探索者': { a: 12, b: 12, c: 10 },
-        '潜力焦虑者': { a: 6, b: 14, c: 12 },
+        '潜力爆发者': { a: 6, b: 14, c: 12 },
         '主动进化者': { a: 4, b: 20, c: 20 }
     };
     return defaultScores[reportType] || { a: 10, b: 10, c: 10 };
@@ -717,29 +729,9 @@ function calculateRadarPoints(values) {
     }).join(' ');
 }
 
-function renderSectionStars(scores) {
-    const maxScore = 24;
-    const stars1 = Math.round((1 - scores.a / maxScore) * 5);
-    const stars2 = Math.round((scores.b / maxScore) * 5);
-    const stars3 = Math.round((scores.c / maxScore) * 5);
-    const stars4 = Math.round(((scores.b + scores.c) / (maxScore * 2)) * 5);
-    
-    renderStarsForSection('sectionStars1', stars1);
-    renderStarsForSection('sectionStars2', stars2);
-    renderStarsForSection('sectionStars3', stars3);
-    renderStarsForSection('sectionStars4', stars4);
-}
 
-function renderStarsForSection(elementId, count) {
-    const container = document.getElementById(elementId);
-    container.innerHTML = '';
-    for (let i = 0; i < 5; i++) {
-        const star = document.createElement('span');
-        star.className = 'star' + (i < count ? ' filled' : '');
-        star.textContent = '★';
-        container.appendChild(star);
-    }
-}
+
+
 
 function previewReport(reportType) {
     renderReport(reportType);

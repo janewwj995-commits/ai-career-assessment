@@ -236,6 +236,7 @@ function initWelcomePage() {
     const startBtn = document.getElementById('start-btn');
     const bottomStartBtn = document.getElementById('bottomStartQuiz');
     const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
     const submitBtn = document.getElementById('submitBtn');
     const brandBadge = document.getElementById('brandBadge');
     
@@ -259,6 +260,10 @@ function initWelcomePage() {
     
     if (prevBtn) {
         prevBtn.addEventListener('click', goToPrevQuestion);
+    }
+    
+    if (nextBtn) {
+        nextBtn.addEventListener('click', goToNextQuestion);
     }
     
     if (submitBtn) {
@@ -332,6 +337,7 @@ function selectOption(index) {
 
 function updateNavButtons() {
     const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
     const submitBtn = document.getElementById('submitBtn');
     
     prevBtn.disabled = currentQuestionIndex === 0;
@@ -339,8 +345,11 @@ function updateNavButtons() {
     const hasAnswer = userAnswers[currentQuestionIndex] !== undefined;
     
     if (currentQuestionIndex === quizData.questions.length - 1) {
+        nextBtn.style.display = 'none';
         submitBtn.style.display = hasAnswer ? 'block' : 'none';
     } else {
+        nextBtn.style.display = 'block';
+        nextBtn.disabled = !hasAnswer;
         submitBtn.style.display = 'none';
     }
 }

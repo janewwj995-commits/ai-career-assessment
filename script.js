@@ -301,12 +301,14 @@ function renderQuestion() {
     const optionsContainer = document.getElementById('optionsContainer');
     optionsContainer.innerHTML = '';
     
+    const currentAnswer = userAnswers[currentQuestionIndex];
+    
     question.options.forEach((option, index) => {
         const btn = document.createElement('button');
         btn.className = 'option-btn';
         btn.innerHTML = `<span class="option-label">${option.label}</span>${option.text}`;
         
-        if (userAnswers[currentQuestionIndex] === index) {
+        if (currentAnswer === index) {
             btn.classList.add('selected');
         }
         

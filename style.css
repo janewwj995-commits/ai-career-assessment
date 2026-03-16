@@ -2879,26 +2879,28 @@ body {
         max-width: 100%;
         margin-bottom: 20px;
         border-radius: 16px;
-        padding: 12px;
+        padding: 10px;
         left: auto;
         top: auto;
         box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
     }
     
     .nav-title {
-        font-size: 13px;
-        margin-bottom: 10px;
+        font-size: 12px;
+        margin-bottom: 8px;
         padding-bottom: 6px;
     }
     
     .nav-links {
+        display: flex;
         overflow-x: auto;
         flex-wrap: nowrap;
-        padding-bottom: 8px;
+        padding-bottom: 4px;
         flex-direction: row;
-        gap: 6px;
+        gap: 4px;
         -webkit-overflow-scrolling: touch;
         scrollbar-width: none;
+        width: 100%;
     }
     
     .nav-links::-webkit-scrollbar {
@@ -2908,10 +2910,13 @@ body {
     .nav-link {
         white-space: nowrap;
         flex-shrink: 0;
-        display: inline-block;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
         border-radius: 50px;
-        padding: 8px 14px;
-        font-size: 12px;
+        padding: 6px 10px;
+        font-size: 11px;
+        min-width: auto;
     }
     
     /* 职业风险指数和雷达图响应式 */

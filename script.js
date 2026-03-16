@@ -318,6 +318,11 @@ function renderQuestion() {
 }
 
 function selectOption(index) {
+    const options = document.querySelectorAll('.option-btn');
+    options.forEach(btn => btn.classList.remove('selected'));
+    
+    options[index].classList.add('selected');
+    
     userAnswers[currentQuestionIndex] = index;
     
     if (currentQuestionIndex < quizData.questions.length - 1) {

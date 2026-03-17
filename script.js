@@ -301,17 +301,10 @@ function renderQuestion() {
     const optionsContainer = document.getElementById('optionsContainer');
     optionsContainer.innerHTML = '';
     
-    const currentAnswer = userAnswers[currentQuestionIndex];
-    
     question.options.forEach((option, index) => {
         const btn = document.createElement('button');
         btn.className = 'option-btn';
         btn.innerHTML = `<span class="option-label">${option.label}</span>${option.text}`;
-        
-        if (currentAnswer !== undefined && currentAnswer === index) {
-            btn.classList.add('selected');
-        }
-        
         btn.addEventListener('click', () => selectOption(index));
         optionsContainer.appendChild(btn);
     });
@@ -320,18 +313,13 @@ function renderQuestion() {
 }
 
 function selectOption(index) {
-    const options = document.querySelectorAll('.option-btn');
-    options.forEach(btn => btn.classList.remove('selected'));
-    
-    options[index].classList.add('selected');
-    
     userAnswers[currentQuestionIndex] = index;
     
     if (currentQuestionIndex < quizData.questions.length - 1) {
         setTimeout(() => {
             currentQuestionIndex++;
             renderQuestion();
-        }, 300);
+        }, 150);
     } else {
         renderQuestion();
     }

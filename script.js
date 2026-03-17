@@ -308,7 +308,7 @@ function renderQuestion() {
         btn.className = 'option-btn';
         btn.innerHTML = `<span class="option-label">${option.label}</span>${option.text}`;
         
-        if (currentAnswer === index) {
+        if (currentAnswer !== undefined && currentAnswer === index) {
             btn.classList.add('selected');
         }
         
@@ -331,7 +331,7 @@ function selectOption(index) {
         setTimeout(() => {
             currentQuestionIndex++;
             renderQuestion();
-        }, 600);
+        }, 300);
     } else {
         renderQuestion();
     }

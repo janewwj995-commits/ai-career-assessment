@@ -975,14 +975,14 @@ function updateRiskLevelIndicator(score) {
 const SUPABASE_URL = 'https://rsadjvktkidfybnrwtra.supabase.co';
 const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJzYWRqdmt0a2lkZnlibnJ3dHJhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzM5OTg1MDMsImV4cCI6MjA4OTU3NDUwM30.6Ou0imKTZZnszKpGr-78XyzxVh40NAYpwawNaJqWfZw';
 
-let supabase = null;
+let supabaseClient = null;
 
 if (typeof window.supabase !== 'undefined') {
-    supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+    supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 }
 
 async function saveToSupabase() {
-    if (!supabase) {
+    if (!supabaseClient) {
         console.log('Supabase未初始化，跳过数据保存');
         return;
     }
@@ -1007,7 +1007,7 @@ async function saveToSupabase() {
     };
     
     try {
-        const { error } = await supabase
+        const { error } = await supabaseClient
             .from('user_reports')
             .insert([data]);
         

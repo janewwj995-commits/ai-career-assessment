@@ -981,6 +981,24 @@ if (typeof window.supabase !== 'undefined') {
     supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 }
 
+function getDeviceType() {
+    const ua = navigator.userAgent;
+    
+    if (/iPad|iPhone|iPod/.test(ua)) {
+        return 'iOS设备';
+    } else if (/Android/.test(ua)) {
+        return '安卓设备';
+    } else if (/Windows/.test(ua)) {
+        return 'Windows电脑';
+    } else if (/Mac/.test(ua)) {
+        return 'Mac电脑';
+    } else if (/Linux/.test(ua)) {
+        return 'Linux电脑';
+    } else {
+        return '其他设备';
+    }
+}
+
 async function saveToSupabase() {
     if (!supabaseClient) {
         console.log('Supabase未初始化，跳过数据保存');
@@ -993,10 +1011,10 @@ async function saveToSupabase() {
     
     let city = '未知';
     try {
-        const response = await fetch('http://ip-api.com/json/?lang=zh-CN');
+        const response = await fetch('https://ipapi.co/json/');
         const locationData = await response.json();
-        if (locationData.status === 'success') {
-            city = locationData.city || '未知';
+        if (locationData.city) {
+            city = locationData.city;
         }
     } catch (err) {
         console.log('获取城市信息失败:', err);
@@ -1011,7 +1029,7 @@ async function saveToSupabase() {
         learning_ability: Math.round((scores.c / maxScore) * 100) + '%',
         execution: Math.round(((scores.b + scores.c) / (maxScore * 2)) * 100) + '%',
         growth_space: Math.round((scores.c / maxScore) * 100) + '%',
-        device_type: /Mobile|Android|iPhone/i.test(navigator.userAgent) ? '手机端' : 'PC端',
+        device_type: getDeviceType(),
         duration: window.quizStartTime ? Math.round((Date.now() - window.quizStartTime) / 1000) + '秒' : '未知',
         city: city,
         answers: userAnswers,

@@ -227,6 +227,7 @@ let currentQuestionIndex = 0;
 let userAnswers = {};
 
 document.addEventListener('DOMContentLoaded', function() {
+    initSupabase();
     initWelcomePage();
     initCardsAnimation();
     initBackToTop();
@@ -548,10 +549,10 @@ function submitQuiz() {
     const reportType = determineReportType(scores);
     console.log('报告类型:', reportType);
     
-    saveToSupabase();
-    
     renderReport(reportType);
     showPage('report-page');
+    
+    saveToSupabase();
 }
 
 function determineReportType(scores) {
@@ -977,8 +978,13 @@ const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBh
 
 let supabaseClient = null;
 
-if (typeof window.supabase !== 'undefined') {
-    supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+function initSupabase() {
+    if (typeof window.supabase !== 'undefined' && !supabaseClient) {
+        supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+        console.log('✅ Supabase客户端初始化成功');
+    } else if (typeof window.supabase === 'undefined') {
+        console.warn('⚠️ Supabase SDK未加载');
+    }
 }
 
 function getDeviceType() {
@@ -1000,19 +1006,26 @@ function getDeviceType() {
 }
 
 async function saveToSupabase() {
+    console.log('开始保存数据到Supabase...');
+    
     if (!supabaseClient) {
-        console.log('Supabase未初始化，跳过数据保存');
+        console.error('Supabase客户端未初始化！');
         return;
     }
+    
+    console.log('Supabase客户端已初始化');
     
     const scores = calculateScores();
     const reportType = determineReportType(scores);
     const maxScore = 24;
     
+    console.log('准备保存的数据:', { scores, reportType });
+    
     let city = '未知';
     try {
         const response = await fetch('https://ipapi.co/json/');
         const locationData = await response.json();
+        console.log('IP定位结果:', locationData);
         if (locationData.city) {
             city = locationData.city;
         }
@@ -1036,15 +1049,19 @@ async function saveToSupabase() {
         scores: scores
     };
     
+    console.log('完整数据对象:', data);
+    
     try {
-        const { error } = await supabaseClient
+        const result = await supabaseClient
             .from('user_reports')
             .insert([data]);
         
-        if (error) {
-            console.error('保存到Supabase失败:', error);
+        console.log('Supabase返回结果:', result);
+        
+        if (result.error) {
+            console.error('保存到Supabase失败:', result.error);
         } else {
-            console.log('数据已成功保存到Supabase');
+            console.log('✅ 数据已成功保存到Supabase');
         }
     } catch (err) {
         console.error('Supabase保存异常:', err);

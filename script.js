@@ -991,6 +991,17 @@ async function saveToSupabase() {
     const reportType = determineReportType(scores);
     const maxScore = 24;
     
+    let city = '未知';
+    try {
+        const response = await fetch('http://ip-api.com/json/?lang=zh-CN');
+        const locationData = await response.json();
+        if (locationData.status === 'success') {
+            city = locationData.city || '未知';
+        }
+    } catch (err) {
+        console.log('获取城市信息失败:', err);
+    }
+    
     const data = {
         test_time: new Date().toISOString(),
         report_type: reportType,
@@ -1002,6 +1013,7 @@ async function saveToSupabase() {
         growth_space: Math.round((scores.c / maxScore) * 100) + '%',
         device_type: /Mobile|Android|iPhone/i.test(navigator.userAgent) ? '手机端' : 'PC端',
         duration: window.quizStartTime ? Math.round((Date.now() - window.quizStartTime) / 1000) + '秒' : '未知',
+        city: city,
         answers: userAnswers,
         scores: scores
     };

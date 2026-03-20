@@ -269,6 +269,7 @@ function initWelcomePage() {
 function startQuiz() {
     currentQuestionIndex = 0;
     userAnswers = {};
+    window.quizStartTime = Date.now();
     showPage('quiz-page');
     renderQuestion();
 }
@@ -546,6 +547,8 @@ function submitQuiz() {
     
     const reportType = determineReportType(scores);
     console.log('报告类型:', reportType);
+    
+    saveToGoogleSheets();
     
     renderReport(reportType);
     showPage('report-page');
@@ -968,3 +971,71 @@ function updateRiskLevelIndicator(score) {
         document.querySelector('.risk-level-low').style.transform = 'scale(1.2)';
     }
 }
+
+function generateReportData() {
+    const scores = calculateScores();
+    const reportType = determineReportType(scores);
+    const maxScore = 24;
+    
+    const reportData = {
+        测试时间: new Date().toLocaleString('zh-CN'),
+        报告类型: reportType,
+        风险指数: Math.round((scores.a / maxScore) * 100) + '%',
+        岗位安全度: Math.round((1 - scores.a / maxScore) * 100) + '%',
+        AI能力: Math.round((scores.b / maxScore) * 100) + '%',
+        学习能力: Math.round((scores.c / maxScore) * 100) + '%',
+        执行力: Math.round(((scores.b + scores.c) / (maxScore * 2)) * 100) + '%',
+        上升空间: Math.round((scores.c / maxScore) * 100) + '%',
+        设备类型: /Mobile|Android|iPhone/i.test(navigator.userAgent) ? '手机端' : 'PC端',
+        完成时长: window.quizStartTime ? Math.round((Date.now() - window.quizStartTime) / 1000) + '秒' : '未知',
+        用户答案: userAnswers,
+        原始分数: scores
+    };
+    
+    return reportData;
+}
+
+function downloadJsonReport() {
+    const data = generateReportData();
+    const jsonString = JSON.stringify(data, null, 2);
+    const blob = new Blob([jsonString], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `AI职业测试报告_${new Date().toISOString().split('T')[0]}.json`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+}
+
+async function saveToGoogleSheets() {
+    const GOOGLE_SCRIPT_URL = '';
+    
+    if (!GOOGLE_SCRIPT_URL) {
+        console.log('Google Sheets URL未配置，跳过自动保存');
+        return;
+    }
+    
+    const data = generateReportData();
+    
+    try {
+        await fetch(GOOGLE_SCRIPT_URL, {
+            method: 'POST',
+            mode: 'no-cors',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data)
+        });
+        console.log('数据已保存到Google Sheets');
+    } catch (error) {
+        console.error('保存到Google Sheets失败:', error);
+    }
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    const downloadBtn = document.getElementById('downloadJsonBtn');
+    if (downloadBtn) {
+        downloadBtn.addEventListener('click', downloadJsonReport);
+    }
+});

@@ -1,0 +1,10 @@
+cd "/Users/wuwenliang/Desktop/Trae/AI Web"
+
+# 重命名分支为 main（如果需要）
+git branch -M main
+
+# 关联远程仓库（替换 您的用户名 为您的GitHub用户名）
+git remote add origin https://github.com/janewwj995-commits/ai-career-assessment.git
+
+# 推送到 GitHub
+git push -u origin main
